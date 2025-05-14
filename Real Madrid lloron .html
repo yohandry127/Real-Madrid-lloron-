@@ -1,0 +1,100 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Barça 4 - 3 Madrid</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      color: white;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ffcccc;
+      text-shadow: 2px 2px 5px black;
+      animation: slideDown 1.5s ease-out;
+    }
+
+    #emojiVinicius {
+      font-size: 5em;
+      animation: cry 2s infinite;
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background-color: #ff1a1a;
+    }
+
+    @keyframes cry {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(10px); opacity: 0.7; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #mensaje {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 30px;
+      color: yellow;
+      text-shadow: 1px 1px 3px black;
+    }
+  </style>
+</head>
+<body>
+  <h1>¡El Real Madrid perdió 4-3!</h1>
+  <div id="emojiVinicius">😭</div>
+
+  <button onclick="mostrarMensaje('¡Grande Barça!')">Celebrar</button>
+  <button onclick="consolar()">Consolar</button>
+  <button onclick="document.getElementById('audio').pause()">Pausar música</button>
+  <button onclick="document.getElementById('audio').play()">Reproducir música</button>
+
+  <p id="mensaje"></p>
+
+  <audio id="audio" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <audio id="llanto">
+    <source src="llanto.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <script>
+    function mostrarMensaje(texto) {
+      const mensaje = document.getElementById("mensaje");
+      mensaje.textContent = texto;
+    }
+
+    function consolar() {
+      mostrarMensaje('No llores más, Vinicius');
+      document.getElementById('llanto').play();
+    }
+  </script>
+</body>
+</html>
